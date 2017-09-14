@@ -1,0 +1,45 @@
+{
+  "type": "kafka",
+  "dataSchema": {
+    "dataSource": "cryptocurrency-market-data",
+    "parser": {
+      "type": "string",
+      "parseSpec": {
+        "timestampSpec": { "column": "_timestamp", "format": "posix" },
+        "dimensionsSpec": {
+          "dimensions": ["cryptocurrency", "exchange", "type", "basecurrency"]
+        },
+        "format": "json"
+      }
+    },
+    "metricsSpec": [
+      { "type": "count", "name": "count" },
+      { "type": "doubleMax", "name": "ask", "fieldName": "ask" },
+      { "type": "doubleMax", "name": "bid", "fieldName": "bid" },
+      { "type": "doubleMax", "name": "high", "fieldName": "high" },
+      { "type": "doubleMax", "name": "low", "fieldName": "low" },
+      { "type": "doubleMax", "name": "open", "fieldName": "open" },
+      { "type": "doubleMax", "name": "price", "fieldName": "price" },
+      { "type": "doubleSum", "name": "size", "fieldName": "size" },
+      { "type": "doubleSum", "name": "volume", "fieldName": "volume" }
+    ],
+    "granularitySpec": {
+      "type": "uniform",
+      "segmentGranularity": "hour",
+      "queryGranularity": "none"
+    }
+  },
+  "tuningConfig": {
+    "type": "kafka",
+    "maxRowsPerSegment": 5000000
+  },
+  "ioConfig": {
+    "topic": "cryptocurrency-market-data",
+    "consumerProperties": {
+      "bootstrap.servers": "druid.example.com:9092"
+    },
+    "taskCount": 1,
+    "replicas": 1,
+    "taskDuration": "PT60S"
+  }
+}

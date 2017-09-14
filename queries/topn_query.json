@@ -1,0 +1,12 @@
+{
+  "queryType": "topN",
+  "dataSource": "cryptocurrency-market-data",
+  "dimension": "cryptocurrency",
+  "threshold": 5,
+  "metric": "count",
+  "granularity": "FIFTEEN_MINUTE",
+  "intervals": [ "2016-01-01/2020-12-31" ],
+  "aggregations": [
+    {"type": "longSum", "fieldName": "count", "name": "count"}
+  ]
+}

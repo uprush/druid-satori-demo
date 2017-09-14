@@ -1,0 +1,38 @@
+{{
+  "type": "kafka",
+  "dataSchema": {{
+    "dataSource": "{0}",
+    "parser": {{
+      "type": "string",
+      "parseSpec": {{
+        "timestampSpec": {{ "column": "_timestamp", "format": "posix" }},
+        "dimensionsSpec": {{
+          "dimensions": [{1}]
+        }},
+        "format": "json"
+      }}
+    }},
+    "metricsSpec": [
+      {{ "type": "count", "name": "count" }},
+      {2}
+    ],
+    "granularitySpec": {{
+      "type": "uniform",
+      "segmentGranularity": "day",
+      "queryGranularity": "minute"
+    }}
+  }},
+  "tuningConfig": {{
+    "type": "kafka",
+    "maxRowsPerSegment": 5000000
+  }},
+  "ioConfig": {{
+    "topic": "{3}",
+    "consumerProperties": {{
+      "bootstrap.servers": "druid.example.com:9092"
+    }},
+    "taskCount": 1,
+    "replicas": 1,
+    "taskDuration": "PT60S"
+  }}
+}}
