@@ -5,7 +5,7 @@
 
 This example streams and indexes data from Satori's cryptocurrency-market-data channel. From there you can analyze the data with SQL or put a Superset visualization layer on top.
 
-If you're lazy just [watch the video](https://youtu.be/MxRWWUc_ZKU).
+If you're lazy just [watch the video](https://youtu.be/pvtdvoZ83uk).
 
 ## Pre-requisites
 
