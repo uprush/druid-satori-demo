@@ -23,6 +23,7 @@ Python, Druid and Kafka are required. Hive is optional but worth the visit. Hort
 * Run 01satori_cryptocurrency_kafka.py to ingest data. If needed, run 01satori_cryptocurrency_kafka.py -k kafka:port. Leave that running on a dedicated terminal.
 * Run 03start_supervisor.sh to start indexing.
 * Run 04query_rest.sh to query the data. It will take a moment or two before any results come back.
+* (optional) Import 06nifi-satori-template.xml to your Nifi flow. You can ingest Satori data with [Nifi Satori Processor](https://community.hortonworks.com/articles/144322/stream-satori-open-data-feeds-with-apache-nifi.html).
 
 ## Help Building Your Own
 
